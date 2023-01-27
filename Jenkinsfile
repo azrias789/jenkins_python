@@ -6,16 +6,16 @@ podTemplate(containers: [
     args: '30d')
 ]) 
 {
-
-  node(POD_LABEL) 
+  node(POD_LABEL)
   {
-      stage('Get a Python Project') 
+    stage('Get a Python Project')
     {
-        container('python') 
+      container('python')
       {
-stages{       
-   stage('Checkout Code') 
+        stages
         {
+          stage('Checkout Code')
+          {
             sh 'pwd'
             sh 'ls -la'
             sh 'python -V'
@@ -23,8 +23,8 @@ stages{
             sh 'ls -la jenkins_python'
             sh 'python jenkins_python/cal.py'
           }
-   stage(' Installing packages') 
-        {
+          stage(' Installing packages')
+          {
             sh 'pwd'
             sh 'ls -la'
             sh 'python -V'
@@ -32,8 +32,8 @@ stages{
             sh 'ls -la jenkins_python'
             sh 'python jenkins_python/cal.py'
           }
-   stage('Static Code Check') 
-        {
+          stage('Static Code Check')
+          {
             sh 'pwd'
             sh 'ls -la'
             sh 'python -V'
@@ -41,11 +41,12 @@ stages{
             sh 'ls -la jenkins_python'
             sh 'python jenkins_python/cal.py'
           }
-stage('Unit Test Check') 
-        {
-            python3 -m unittest check_os.py          }
-}
+          stage('Unit Test Check')
+          {
+            sh 'python3 -m unittest check_os.py'          
+          }
         }
       }
     }
+  }
 }
