@@ -1,9 +1,10 @@
 import unittest
 
-class test(unittest.TestCase):
+class testcal(unittest.TestCase):
   def test_msg(self):
-    print("Hello, this is a test")
+    a = 'some'
+    b = 'some'
+    self.assertEqual(a,b)
 
 if __name__ == '__main__':
   unittest.main()
-      
