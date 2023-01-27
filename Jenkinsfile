@@ -12,8 +12,6 @@ podTemplate(containers: [
     {
       container('python')
       {
-        stages
-        {
           stage('Checkout Code')
           {
             sh 'pwd'
@@ -45,7 +43,7 @@ podTemplate(containers: [
           {
             sh 'python3 -m unittest check_os.py'          
           }
-        }
+        
       }
     }
   }
