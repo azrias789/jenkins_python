@@ -18,7 +18,6 @@ pipeline {
             steps {
                 echo 'Deploying....'
 		sh 'df'
-		sh 'pwd'
             }
         }
     }
