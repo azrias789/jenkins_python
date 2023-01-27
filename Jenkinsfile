@@ -28,7 +28,7 @@ podTemplate(containers: [
             sh 'ls -la'
             sh 'python -V'
             sh 'apt install pip'
-            sh 'pip install requests'
+            sh 'pip install -y requests'
             sh 'python jenkins_python/cal.py'
           }
           stage('Static Code Check')
