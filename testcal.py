@@ -1,6 +1,6 @@
 import unittest
 
-class test(unittest.TestCasse):
+class test(unittest.TestCase):
   def test_msg(self):
     print("Hello, this is a test")
 
