@@ -6,6 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'python -V'
+		sh 'hostname'
             }
         }
         stage('Test') {
