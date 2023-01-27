@@ -1,30 +1,51 @@
-pipeline {
-	//simple Jenkinfile to test pipeline in Jenkin master container
-    agent any
+podTemplate(containers: [
+  containerTemplate(
+    name: 'python', 
+    image: 'jenkins/inbound-agent-python:latest', 
+    command: 'sleep', 
+    args: '30d')
+]) 
+{
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-                sh 'python -V'
-		sh 'hostname'
-            }
+  node(POD_LABEL) 
+  {
+      stage('Get a Python Project') 
+    {
+        container('python') 
+      {
+stages{       
+   stage(‘Checkout Code’) 
+        {
+            sh 'pwd'
+            sh 'ls -la'
+            sh 'python -V'
+            sh 'git clone https://github.com/hanley/jenkins_python.git'
+            sh 'ls -la jenkins_python'
+            sh 'python jenkins_python/cal.py'
+          }
+   stage(' Installing packages') 
+        {
+            sh 'pwd'
+            sh 'ls -la'
+            sh 'python -V'
+            sh 'git clone https://github.com/hanley/jenkins_python.git'
+            sh 'ls -la jenkins_python'
+            sh 'python jenkins_python/cal.py'
+          }
+   stage(‘Static Code Check') 
+        {
+            sh 'pwd'
+            sh 'ls -la'
+            sh 'python -V'
+            sh 'git clone https://github.com/hanley/jenkins_python.git'
+            sh 'ls -la jenkins_python'
+            sh 'python jenkins_python/cal.py'
+          }
+stage(‘Unit Test Check') 
+        {
+            python3 -m unittest check_os.py          }
+}
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                sh 'python3 -V'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-		sh 'df'
-		    //if folder already exist, must do git pull
-                sh 'git pull https://github.com/hanley/jenkins_python.git'
-                sh 'ls -la jenkins_python'
-                sh 'python jenkins_python/cal.py'
-            }
-        }
+      }
     }
 }
