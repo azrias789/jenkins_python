@@ -28,7 +28,7 @@ podTemplate(containers: [
             sh 'ls -la'
             sh 'python -V'
             sh 'ls -la jenkins_python'
-            sh 'python jenkins_python/testcal.py'
+            sh 'python jenkins_python/cal.py'
           }
           stage('Static Code Check')
           {
@@ -40,7 +40,7 @@ podTemplate(containers: [
           }
           stage('Unit Test Check')
           {
-            sh 'python -m unittest jenkins_python/cal.py'          
+            sh 'python -m unittest jenkins_python/testcal.py'          
           }
         
       }
