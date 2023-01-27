@@ -1,4 +1,5 @@
 pipeline {
+	//simple Jenkinfile to test pipeline in Jenkin master container
     agent any
 
     stages {
