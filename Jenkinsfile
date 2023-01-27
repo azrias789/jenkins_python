@@ -27,6 +27,7 @@ podTemplate(containers: [
             sh 'pwd'
             sh 'ls -la'
             sh 'python -V'
+            sh 'apt install pip'
             sh 'pip install requests'
             sh 'python jenkins_python/cal.py'
           }
