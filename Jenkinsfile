@@ -14,7 +14,7 @@ podTemplate(containers: [
         container('python') 
       {
 stages{       
-   stage(‘Checkout Code’) 
+   stage('Checkout Code') 
         {
             sh 'pwd'
             sh 'ls -la'
@@ -32,7 +32,7 @@ stages{
             sh 'ls -la jenkins_python'
             sh 'python jenkins_python/cal.py'
           }
-   stage(‘Static Code Check') 
+   stage('Static Code Check') 
         {
             sh 'pwd'
             sh 'ls -la'
@@ -41,7 +41,7 @@ stages{
             sh 'ls -la jenkins_python'
             sh 'python jenkins_python/cal.py'
           }
-stage(‘Unit Test Check') 
+stage('Unit Test Check') 
         {
             python3 -m unittest check_os.py          }
 }
