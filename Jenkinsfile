@@ -28,7 +28,7 @@ podTemplate(containers: [
             sh 'ls -la'
             sh 'python -V'
             sh 'ls -la jenkins_python'
-            sh 'python jenkins_python/cal.py'
+            sh 'python jenkins_python/testcal.py'
           }
           stage('Static Code Check')
           {
