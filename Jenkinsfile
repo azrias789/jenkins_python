@@ -18,7 +18,7 @@ podTemplate(containers: [
             sh 'ls -la'
             sh 'python -V'
             sh 'hostname'
-            sh 'git clone https://github.com/hanley/jenkins_python.git'
+            sh 'git clone https://github.com/azrias789/jenkins_python'
             sh 'ls -la jenkins_python'
             sh 'python jenkins_python/cal.py'
           }
@@ -27,6 +27,7 @@ podTemplate(containers: [
             sh 'pwd'
             sh 'ls -la'
             sh 'python -V'
+	    sh 'git clone https://github.com/azrias789/jenkins_python'
             sh 'apt install -y pip'
             sh 'pip install requests'
             sh 'python jenkins_python/cal.py'
@@ -36,12 +37,13 @@ podTemplate(containers: [
             sh 'pwd'
             sh 'ls -la'
             sh 'python -V'
+            sh 'git clone https://github.com/azrias789/jenkins_python'
             sh 'ls -la jenkins_python'
             sh 'python jenkins_python/cal.py'
           }
           stage('Unit Test Check')
           {
-            sh 'python jenkins_python/testcal.py'          
+            python3 -m unittest check_os.py          
           }
         
       }
